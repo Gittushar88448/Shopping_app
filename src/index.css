@@ -17,3 +17,17 @@
        transform: rotate(1turn);
     }
  }
+
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+    background-color: #fff;
+    overflow-y: auto;
+  }
+  
