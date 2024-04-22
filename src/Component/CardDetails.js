@@ -1,11 +1,24 @@
 import React from 'react'
-import {  useSelector } from 'react-redux';
-
+import {useDispatch,  useSelector } from 'react-redux';
+import { add, remove } from '../redux/Slice/CartSlice';
+import toast from 'react-hot-toast';
 
 const CardDetails = ({ post }) => {
 
 
+    const dispatch = useDispatch();
     const { ShoppingCart } = useSelector((state) => state);
+    
+    
+    function removeCartItem() {
+        dispatch(remove(post.id))
+        toast.error("Item removed from cart!")
+    }
+
+    function addCartItem() {
+        dispatch(add(post))
+        toast.success("Item added to cart!");
+    }
 
 
     return (
@@ -30,6 +43,8 @@ const CardDetails = ({ post }) => {
                         ShoppingCart.some((p) => p.id === post.id) ?
                             (
                                 <button 
+                                
+                                    onClick={removeCartItem}  
                                     className="text-gray-700 border-2 border-gray-700 rounded-full font-semibold 
                                         text-[12px] p-1 px-3 uppercase 
                                         hover:bg-gray-700
@@ -40,7 +55,7 @@ const CardDetails = ({ post }) => {
                             )
                             :
                             (
-                                <button 
+                                <button onClick={addCartItem}
                                     className="text-gray-700 border-2 border-gray-700 rounded-full font-semibold 
                                         text-[12px] p-1 px-3 uppercase 
                                         hover:bg-gray-700
