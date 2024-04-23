@@ -7,13 +7,19 @@ const CardDetails = ({ post }) => {
 
 
     const dispatch = useDispatch();
+
+    // Fetch shopping cart from the redux store
+
     const { ShoppingCart } = useSelector((state) => state);
     
-    
+    // Remove cart item function 
+
     function removeCartItem() {
         dispatch(remove(post.id))
         toast.error("Item removed from cart!")
     }
+
+    // add to cart item
 
     function addCartItem() {
         dispatch(add(post))
@@ -39,6 +45,7 @@ const CardDetails = ({ post }) => {
                     <p className="text-green-600 font-semibold">${post.price}</p>
                 </div>
                 <div>
+                    {/* Show add to cart and remove from cart button on the basis of some condition  */}
                     {
                         ShoppingCart.some((p) => p.id === post.id) ?
                             (
