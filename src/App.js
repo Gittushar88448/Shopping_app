@@ -7,9 +7,12 @@ function App() {
   return (
     <div className="App">
 
+    {/* Navigation component */}
     <div>
       <Navbar/>
     </div>
+
+    {/* Adding Routes */}
 
     <Routes>
       <Route path="/" element={<Home/>}/>
